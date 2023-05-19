@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="1.css">
+</head>
+<body>
+    <form onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+
+            if (name === "" || email === "") {
+                alert("Please fill in all fields.");
+                return false;
+            }
+            
+            var saveCookies = confirm("Do you want to save cookies?");
+            if (saveCookies) {
+                alert("Cookies will be saved.");
+            } else {
+                alert("Cookies will not be saved.");
+            }
+
+            var mailtoLink = "mailto:gigebi2006@gmail.com";
+            mailtoLink += "?subject=Contact Form Submission";
+            mailtoLink += "&body=Name: " + encodeURIComponent(name);
+            mailtoLink += "%0AEmail: " + encodeURIComponent(email);
+
+            window.location.href = mailtoLink;
+            
+            return false; 
+        }
+    </script>
+</body>
+</html>
